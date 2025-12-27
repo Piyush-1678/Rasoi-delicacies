@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Box, Container, Typography, Grid } from "@mui/material";
-import MainLogo from '../../public/Fulllogo.png';
+import MainLogo from '../../public/assets/Fulllogo.png';
 import CustomContainer from '../common/CustomContainer';
 const About = () => {
     return (
