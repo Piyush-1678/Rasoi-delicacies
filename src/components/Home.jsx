@@ -5,7 +5,7 @@ import CustomContainer from '../common/CustomContainer';
 
 const Home = () => {
     return (
-        <Box className="home">
+        <Box className="home" id="home">
             <CustomContainer color="white">
                 <Box sx={{
                     display: 'flex',

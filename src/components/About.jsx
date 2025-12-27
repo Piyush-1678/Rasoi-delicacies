@@ -32,7 +32,8 @@ const About = () => {
                                 overflow: 'hidden',
                                 height: 'auto',
                                 objectFit: "contain",
-                                margin: { xs: '-3rem auto', sm: "-1.5rem auto", md: '-3.5rem auto 0rem', lg: '-5rem auto 0rem' },
+                                zIndex: -1,
+                                margin: { xs: '0rem auto', sm: "-1.5rem auto", md: '-1rem auto 0rem', lg: '-5rem auto 0rem' },
                             }}
                         />
                     </Grid>

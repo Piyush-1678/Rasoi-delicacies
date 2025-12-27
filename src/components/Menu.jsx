@@ -46,12 +46,29 @@ function a11yProps(index) {
   };
 }
 
-const Item = ({ image, price, name }) => {
+const Item = ({ image, price, halfPrice, name }) => {
   return (
-    <Card sx={{ maxWidth: "260px", width: "260px" ,height:'6rem' }}>
+    <Card sx={{ 
+      width: "100%",
+      height: { xs: '6rem', sm: '5.5rem', md: '6rem' },
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center'
+    }}>
       <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+        <CardContent sx={{ p: { xs: 1, sm: 1.5, md: 2 } }}>
+          <Typography variant="caption" color="text.secondary">
+            {price ? `Full : ${price} ₹/-` : ""}
+          </Typography>
+          <Typography variant="caption" color="text.secondary" sx={{ ml: 1 }}>
+            {halfPrice ? `Half : ${halfPrice} ₹/-` : ""}
+          </Typography>
+          <Typography 
+            gutterBottom 
+            variant={{ xs: 'body2', sm: 'body2', md: 'h5' }} 
+            component="div"
+            sx={{ m: 0 }}
+          >
             {name}
           </Typography>
         </CardContent>
@@ -73,7 +90,7 @@ const MenuGrid = ({ items, filterSelection }) => {
   }, [filterSelection]);
   return (
     <>
-      <Box sx={{ flexGrow: 1, bgcolor: "background.paper", display: "flex" }}>
+      <Box sx={{ flexGrow: 1, bgcolor: "background.paper", display: "flex",width:"100%" }}>
         <Tabs
           orientation="vertical"
           variant="scrollable"
@@ -81,30 +98,32 @@ const MenuGrid = ({ items, filterSelection }) => {
           onChange={handleChange}
           aria-label="Vertical tabs example"
           sx={{ borderRight: 1, borderColor: "divider" }}
+          className="secondary-tab-menu"
         >
           {selectedFilter.map((filter, index) => (
             <Tab
-              style={{ alignItems: "end" }}
               label={filter.value}
               key={index}
               value={filter.key}
+              sx={{ minWidth: { xs: 'auto', md: '120px' } }}
             />
           ))}
         </Tabs>
-        <TabPanel>
+        <TabPanel style={{ width: "85%" }}>
           <Box
-            style={{ maxHeight: "75vh", overflowY: "auto", marginTop: "-1rem", paddingBottom:"1rem" }}
             sx={{
               display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 2,
-              marginTop: "2rem",
+              gridTemplateColumns: { xs: "repeat(2, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)" },
+              gap: { xs: 1, sm: 1.5, md: 2 },
+              marginTop: "0rem",
             }}
+            className="menu-card"
           >
             {itemsToDisplay.map((item, index) => (
               <Item
                 key={index}
-                price={item.price}
+                price={item?.price}
+                halfPrice={item?.halfPrice}
                 name={item.name}
               />
             ))}
@@ -127,7 +146,7 @@ const Menu = () => {
         component="h2"
         gutterBottom
         align="center"
-        className="heading-text"
+        className="primary-text"
         sx={{ marginBottom: "1rem" }}
         id="menu"
       >
@@ -137,7 +156,7 @@ const Menu = () => {
         elevation={3}
         sx={{ width: "100%", height: "auto", marginBottom: "1rem" }}
       >
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', padding: '0.5rem 1rem' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', padding: { xs: '0.5rem 0.5rem', sm: '0.5rem 1rem' } }}>
           <Button
             variant="outlined"
             color="primary"
@@ -145,6 +164,8 @@ const Menu = () => {
             href="/menu.pdf"
             download
             aria-label="Download menu PDF"
+            size="small"
+            sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
           >
             Download Menu
           </Button>
@@ -162,6 +183,7 @@ const Menu = () => {
             variant="scrollable"
             scrollButtons={false}
             aria-label="scrollable prevent tabs example"
+            className="main-tab-menu"
           >
             {DishFilters.map((filter) => (
               <Tab label={filter.value} key={filter.id} value={filter.id} />

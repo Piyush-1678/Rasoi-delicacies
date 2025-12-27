@@ -31,9 +31,16 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Home','About','Contact','Menu','Services'].map((text, index) => (
+        {['Home', 'About', 'Menu'].map((text) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton
+              component="a"
+              href={`#${text.toLowerCase()}`}
+              onClick={(e) => {
+                // let the anchor navigate, then close the drawer
+                toggleDrawer(anchor, false)(e);
+              }}
+            >
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
@@ -43,15 +50,17 @@ export default function SwipeableTemporaryDrawer() {
   );
 
   return (
-    <Box className="mobile-nav">
+    <Box className="mobile-nav" role="navigation">
       {['left'].map((anchor) => (
-        <React.Fragment>
-          <Button sx={{color:'white'}} onClick={toggleDrawer('left', true)}><MenuIcon/></Button>
+        <React.Fragment key={anchor}>
+          <Button sx={{ color: 'white' }} onClick={toggleDrawer(anchor, true)}>
+            <MenuIcon />
+          </Button>
           <SwipeableDrawer
-            anchor={'left'}
-            open={state['left']}
-            onClose={toggleDrawer('left', false)}
-            onOpen={toggleDrawer('left', true)}
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+            onOpen={toggleDrawer(anchor, true)}
           >
             {list(anchor)}
           </SwipeableDrawer>
