@@ -136,7 +136,8 @@
   display: none;
 }
 
-@media screen and (min-width: 577px) and (max-width: 767px) {
+
+@media screen and (min-width: 400px) and (max-width: 767px) {
     .header {
         width: 95%;
         top: 5%;
@@ -165,6 +166,15 @@
     }
     .secondary-tab-menu {
         width: 20% !important;
+    }
+    .menu-tab-panel .MuiBox-root{
+    padding: 4px !important;
+    }
+    .price-text{
+        display: block;
+    }
+    .half-price{
+        margin-left: 0 !important;
     }
 }
 
@@ -200,6 +210,9 @@
     .secondary-tab-menu {
         width: 15% !important;
     }
+    .menu-tab-panel .MuiBox-root{
+    padding: 4px !important;
+}
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {

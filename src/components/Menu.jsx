@@ -57,10 +57,10 @@ const Item = ({ image, price, halfPrice, name }) => {
     }}>
       <CardActionArea>
         <CardContent sx={{ p: { xs: 1, sm: 1.5, md: 2 } }}>
-          <Typography variant="caption" color="text.secondary">
+          <Typography className="price-text" variant="caption" color="text.secondary">
             {price ? `Full : ${price} ₹/-` : ""}
           </Typography>
-          <Typography variant="caption" color="text.secondary" sx={{ ml: 1 }}>
+          <Typography className="price-text half-price" variant="caption" color="text.secondary" sx={{ ml: 1 }}>
             {halfPrice ? `Half : ${halfPrice} ₹/-` : ""}
           </Typography>
           <Typography 
@@ -109,13 +109,13 @@ const MenuGrid = ({ items, filterSelection }) => {
             />
           ))}
         </Tabs>
-        <TabPanel style={{ width: "85%" }}>
+      <TabPanel style={{ width: "85%"}} className="menu-tab-panel">
           <Box
             sx={{
               display: "grid",
               gridTemplateColumns: { xs: "repeat(2, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)" },
               gap: { xs: 1, sm: 1.5, md: 2 },
-              marginTop: "0rem",
+              marginTop: "0rem"
             }}
             className="menu-card"
           >
