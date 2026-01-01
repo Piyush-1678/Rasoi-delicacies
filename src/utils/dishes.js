@@ -86,7 +86,7 @@ export const dishes = [
     dishes: [
       {
         name: "Crispy Chicken",
-        category: ["tandoor", "chicken"],
+        category: ["fried", "chicken"],
         price : 440,
         halfPrice: 220
 
