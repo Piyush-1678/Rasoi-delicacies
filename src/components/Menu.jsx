@@ -50,7 +50,7 @@ const Item = ({ image, price, halfPrice, name }) => {
   return (
     <Card sx={{ 
       width: "100%",
-      height: { xs: '6rem', sm: '5.5rem', md: '6rem' },
+      height: { xs: '8rem', sm: '6rem', md: '6rem' },
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center'

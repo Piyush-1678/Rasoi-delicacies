@@ -59,7 +59,7 @@
     background: url('/assets/landing.jpg') center center/cover no-repeat;
     filter: brightness(20%);
     background-attachment: fixed;
-    z-index: 0;
+    z-index: -1;
 }
 
 .home>* {
@@ -78,7 +78,7 @@
     background: url('/assets/back.jpg') center center/cover no-repeat;
     filter: brightness(20%);
     background-attachment: fixed;
-    z-index: -10;
+    z-index: -1;
 }
 
 .content-section{
@@ -125,12 +125,24 @@
     .secondary-tab-menu {
         width: 20% !important;
     }
+    /* Make hero background fully visible on small screens */
+    .home {
+        min-height: 40vh !important;
+    }
+    .home::before {
+        background-position: top center;
+        /* show full image without cropping on very small screens */
+        background-size: contain;
+        background-repeat: no-repeat;
+        /* fixed attachment causes issues on mobile; use scroll */
+        background-attachment: scroll;
+    }
 }
 .menu-card{
     max-height: 75vh;
     overflow-y: auto;
-    margin-top: "-1rem";
-    padding-bottom:"1rem";
+    margin-top: -1rem;
+    padding-bottom: 1rem;
 }
 .menu-card::-webkit-scrollbar,.content-text::-webkit-scrollbar {
   display: none;
@@ -166,6 +178,15 @@
     }
     .secondary-tab-menu {
         width: 20% !important;
+    }
+    /* Improve visibility for slightly larger phones/tablets */
+    .home {
+        min-height: 70vh;
+    }
+    .home::before {
+        background-position: top center;
+        background-size: cover;
+        background-attachment: scroll;
     }
     .menu-tab-panel .MuiBox-root{
     padding: 4px !important;
