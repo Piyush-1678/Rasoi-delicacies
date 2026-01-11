@@ -1,0 +1,7 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/kkkbbpdmvhjb/public_html/rasoidelicacies.com
+    - /usr/local/bin/npm install
+    - /usr/local/bin/npm run build
+    - /bin/rm -rf $DEPLOYPATH/*
+    - /bin/cp -R dist/* $DEPLOYPATH/
