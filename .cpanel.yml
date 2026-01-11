@@ -1,14 +1,13 @@
 ---
 deployment:
   tasks:
-    - echo "🚀 DEPLOYMENT STARTED"
+    - echo "DEPLOY START" >> /home/kkkbbpdmvhjb/deploy.log
     - export DEPLOYPATH=/home/kkkbbpdmvhjb/public_html/rasoidelicacies.com
-    - echo "Deploy path is $DEPLOYPATH"
-    - /usr/local/bin/npm -v
-    - /usr/local/bin/npm install
-    - echo "✅ Dependencies installed"
-    - /usr/local/bin/npm run build
-    - echo "✅ Build completed"
-    - /bin/rm -rf $DEPLOYPATH/* 
-    - /bin/cp -R dist/* $DEPLOYPATH/
-    - echo "🎉 DEPLOYMENT FINISHED"
+    - echo "Path: $DEPLOYPATH" >> /home/kkkbbpdmvhjb/deploy.log
+    - which npm >> /home/kkkbbpdmvhjb/deploy.log 2>&1
+    - /usr/local/bin/npm -v >> /home/kkkbbpdmvhjb/deploy.log 2>&1
+    - /usr/local/bin/npm install >> /home/kkkbbpdmvhjb/deploy.log 2>&1
+    - /usr/local/bin/npm run build >> /home/kkkbbpdmvhjb/deploy.log 2>&1
+    - /bin/rm -rf $DEPLOYPATH/* >> /home/kkkbbpdmvhjb/deploy.log 2>&1
+    - /bin/cp -R dist/* $DEPLOYPATH/ >> /home/kkkbbpdmvhjb/deploy.log 2>&1
+    - echo "DEPLOY END" >> /home/kkkbbpdmvhjb/deploy.log
