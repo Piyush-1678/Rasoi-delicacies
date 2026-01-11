@@ -1,7 +1,14 @@
+---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/kkkbbpdmvhjb/public_html/rasoidelicacies.com
+    - echo "🚀 DEPLOYMENT STARTED"
+    - export DEPLOYPATH=/home/YOUR_CPANEL_USER/public_html
+    - echo "Deploy path is $DEPLOYPATH"
+    - /usr/local/bin/npm -v
     - /usr/local/bin/npm install
+    - echo "✅ Dependencies installed"
     - /usr/local/bin/npm run build
+    - echo "✅ Build completed"
     - /bin/rm -rf $DEPLOYPATH/*
     - /bin/cp -R dist/* $DEPLOYPATH/
+    - echo "🎉 DEPLOYMENT FINISHED"
